@@ -7,7 +7,7 @@ description:
   触发场景：用户要求搜索信息、查看网页内容、访问需要登录的网站、操作网页界面、抓取社交媒体内容（小红书、微博、推特等）、读取动态渲染页面、以及任何需要真实浏览器环境的网络任务。
 metadata:
   author: 一泽Eze
-  version: "2.4.1"
+  version: "2.5.0"
 ---
 
 # web-access Skill
@@ -239,6 +239,77 @@ updated: 2026-03-19
 什么会失败以及为什么
 ```
 经验/陷阱内容标注发现日期，当作"可能有效的提示"而非"保证正确的事实"。
+
+## 工具脚本
+
+### URL 编码工具
+
+在访问包含非 ASCII 字符（如中文、日文、俄文等）的 URL 时，**必须先进行 URL 编码**，以确保 CDP 浏览器稳定访问。
+
+**脚本位置**：`scripts/url-encode.mjs`
+
+**使用方法**：
+
+```bash
+# 编码中文文本
+node "$CLAUDE_SKILL_DIR/scripts/url-encode.mjs" "百度首页"
+# 输出: %E7%99%BE%E5%BA%A6%E9%A6%96%E9%A1%B5
+
+# 编码完整 URL（推荐 - 保留协议和域名）
+node "$CLAUDE_SKILL_DIR/scripts/url-encode.mjs" "https://en.wikipedia.org/wiki/URL_encoding" -p
+# 输出: https://en.wikipedia.org/wiki/URL_encoding
+
+# 编码包含查询参数的 URL
+node "$CLAUDE_SKILL_DIR/scripts/url-encode.mjs" "https://github.com/search?q=react hooks" -p
+# 输出: https://github.com/search?q=react%20hooks
+
+# 解码
+node "$CLAUDE_SKILL_DIR/scripts/url-encode.mjs" "%E7%99%BE%E5%BA%A6" -d
+# 输出: 百度
+```
+
+**CDP 操作中的使用流程**：
+
+```bash
+# 1. 先编码 URL
+ENCODED=$(node "$CLAUDE_SKILL_DIR/scripts/url-encode.mjs" "https://www.google.com/search?q=Claude+API" -p)
+
+# 2. 使用编码后的 URL 创建新 tab
+curl -s "http://localhost:3456/new?url=${ENCODED}"
+```
+
+**为什么需要 URL 编码？**
+- 直接使用非 ASCII 字符的 URL 可能导致编码不一致
+- 部分网站或浏览器无法正确识别非 ASCII 字符
+- 编码后可以稳定访问目标页面
+- 查询参数中的特殊字符（如空格、`&`、`=`）也需要编码
+
+**常见编码场景**：
+| 场景 | 示例 | 编码后 |
+|------|------|--------|
+| 中文搜索词 | `搜索` | `%E6%90%9C%E7%B4%A2` |
+| 空格 | `hello world` | `hello%20world` |
+| URL参数分隔 | `a=1&b=2` | `a%3D1%26b%3D2` |
+
+### 浏览器打开工具
+
+在默认浏览器中打开 URL，适用于需要用户在可视化界面中查看内容的场景。
+
+**脚本位置**：`scripts/open-browser.mjs`
+
+**使用方法**：
+
+```bash
+# 在默认浏览器中打开 URL
+node "$CLAUDE_SKILL_DIR/scripts/open-browser.mjs" "https://github.com"
+```
+
+**跨平台支持**：
+| 平台 | 命令 |
+|------|------|
+| Windows | `start ""` |
+| macOS | `open` |
+| Linux | `xdg-open` |
 
 ## References 索引
 
