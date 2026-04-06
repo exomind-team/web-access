@@ -1,0 +1,28 @@
+scripts/url-encode.mjs
+  eee240f04be788ee 71-73,76-77,80-81
+scripts/open-browser.mjs
+  eee240f04be788ee 1-67
+SKILL.md
+  eee240f04be788ee 10,243,245,247,249,251,271,281-285,287-292,294,296,298,300,307-312
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "853a4148c2490f3ecba66b33e2863988f54b747a",
+  "prompts": {
+    "eee240f04be788ee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "608d4751-e887-447c-bf2f-11039d8b4953",
+        "model": "MiniMax-M2.5"
+      },
+      "human_author": "ARCJ137442",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 102,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/412a6cc8699fa379302987cf255aea1771601ab17425bc0bb94e6bdafe7c25ac"
+    }
+  }
+}
