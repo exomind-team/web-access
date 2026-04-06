@@ -1,3 +1,5 @@
 .DS_Store
 *.log
-references/site-patterns/*.md
+*.stackdump
+# 站点经验示例文件（会被 .gitkeep 占位，正式使用时取消忽略）
+# references/site-patterns/*.md
