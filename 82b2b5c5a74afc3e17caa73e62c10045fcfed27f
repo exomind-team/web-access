@@ -1,0 +1,26 @@
+scripts/open-browser.mjs
+  eee240f04be788ee 1-67
+SKILL.md
+  eee240f04be788ee 290,294,296,298,300,307-312
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "82b2b5c5a74afc3e17caa73e62c10045fcfed27f",
+  "prompts": {
+    "eee240f04be788ee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "608d4751-e887-447c-bf2f-11039d8b4953",
+        "model": "MiniMax-M2.5"
+      },
+      "human_author": "ARCJ137442",
+      "messages": [],
+      "total_additions": 388,
+      "total_deletions": 301,
+      "accepted_lines": 210,
+      "overriden_lines": 16,
+      "messages_url": "https://usegitai.com/cas/412a6cc8699fa379302987cf255aea1771601ab17425bc0bb94e6bdafe7c25ac"
+    }
+  }
+}
