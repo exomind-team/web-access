@@ -1,22 +1,39 @@
 ---
 domain: linux.do
-aliases: [L站, 佬站, Linux Do]
+aliases: [L站, linux do, linuxdo]
 updated: 2026-04-06
 ---
 ## 平台特征
-- 中文技术社区，2024年1月开站
-- 社区成员称谓：佬友
-- 备用域名：linuxdo.org
+- Discourse 框架社区
+- AI 友好社区，口号"学AI，上L站！"
+- 有反 AI 内容政策：禁止 AI 生成内容，违规永久封号
+- 支持用户搜索、话题搜索、标签搜索
 
 ## 有效模式
-- 搜索功能**需要登录态**，未登录用户会看到"没有找到相关内容"
-- 首页和浏览功能无需登录即可访问
-- 登录后可以搜索帖子、发布内容、参与讨论
+### 搜索
+- 话题搜索：`https://linux.do/search?q=关键词`
+- 用户搜索：`https://linux.do/search?q=关键词&search_type=users`
+- 标签搜索：`https://linux.do/search?q=关键词&search_type=categories_tags`
+- 排序参数：`order:latest`（最新）
+
+### 用户主页
+- URL 格式：`https://linux.do/u/用户名`
+- 例如：`https://linux.do/u/ezez`
+
+### 页面操作
+- `/new` 创建新标签页
+- `/navigate` 导航到 URL
+- `/scroll` 滚动页面（触发懒加载）
+- `/click` 点击元素（JS click）
+- `/clickAt` 真实鼠标点击
 
 ## 已知陷阱
-- 未登录状态搜索结果为空，需要先登录才能使用搜索功能
-- CDP 浏览器需要使用用户的登录态才能正常搜索
+- `search_type=users` 参数需要登录态才能正确切换搜索类型
+- 未登录时即使 URL 带此参数，仍显示话题/帖子结果
+- 网站有严格反 AI 政策，Agent 操作时需注意
+- 页面懒加载：需滚动后才能获取完整内容
+- 部分链接 href 为空或无文本，需通过 `outerHTML` 查找
 
-## 替代方案
-- **无登录态时**：使用 Google/Bing 等搜索引擎搜索 `site:linux.do 关键词`，可以找到帖子链接
-- 搜索引擎结果中的帖子链接可以直接用 CDP 打开访问（无需登录）
+## 相关账号
+- GitHub: `eze-is`（web-access 作者）
+- L站: `ezez`（发布过 web-access 推广帖）
