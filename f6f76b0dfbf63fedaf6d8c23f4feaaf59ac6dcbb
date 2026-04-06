@@ -1,0 +1,24 @@
+SKILL.md
+  eee240f04be788ee 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "f6f76b0dfbf63fedaf6d8c23f4feaaf59ac6dcbb",
+  "prompts": {
+    "eee240f04be788ee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "608d4751-e887-447c-bf2f-11039d8b4953",
+        "model": "MiniMax-M2.5"
+      },
+      "human_author": "ARCJ137442",
+      "messages": [],
+      "total_additions": 321,
+      "total_deletions": 319,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/47643467d515600d7040f1d22d57f55054c4709a2a09c7ecb6ca06463ab8b2ff"
+    }
+  }
+}
